@@ -45,6 +45,19 @@ public class LucidExamplePlugin extends Plugin
         }
     }
 
+        @Subscribe
+        private void loop() throws InterruptedException {
+
+        TeleportLoader.refreshTeleports();
+        Magic.cast(SpellBook.Standard.HOME_TELEPORT);
+        Time.sleepTicks(30);
+        TileObject stairs1 = TileObjects.getNearest("Staircase");
+        {
+            Movement.walkNextTo(stairs1);
+        }
+        stairs1.interact("Climb-Up");
+    }    
+
     @Override
     protected void shutDown()
     {
